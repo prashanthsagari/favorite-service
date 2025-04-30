@@ -1,0 +1,43 @@
+Run below commands using Powershell if  you are using Windows OS
+# start minikube in docker 
+minikube start --driver=docker
+
+# run below command Connect to Minikube Docker (`& minikube docker-env  Invoke-Expression`)
+# Otherwise the image will be in your local PC, not inside Minikube’s Docker engine.
+& minikube docker-env | Invoke-Expression
+
+# (Name: minikube)
+docker info  
+
+# run below command 
+mvn clean install  
+
+
+# Build image 
+docker build -t favorites-service:latest .
+
+
+# verify image is creation
+docker images
+
+# deployments 
+
+kubectl apply -f favorites-deployment.yaml
+kubectl apply -f favorites-service.yaml
+
+kubectl get pods
+
+
+minikube service favorites-service --url
+       or
+kubectl port-forward svc/favorites-service 9001:9001
+
+
+
+
+# Delete old deployments 
+kubectl delete deployment favorites-service
+kubectl delete service favorites-service
+
+# Stop minikube
+minikube stop
