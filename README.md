@@ -19,12 +19,14 @@ Before you begin, ensure you have the following installed:
 Run the following command to start Minikube with Docker as the driver:
 
 Run below commands using Powershell if  you are using Windows OS
-# start minikube in docker 
-minikube start --driver=docker
+# start minikube in docker
+Otherwise the image will be in your local PC, not inside Minikube’s Docker engine.
+ 
+### 2. Connect to Minikube's Docker Engine
+In PowerShell, run the following to switch to Minikube's Docker environment:
 
-# run below command Connect to Minikube Docker (`& minikube docker-env  Invoke-Expression`)
-# Otherwise the image will be in your local PC, not inside Minikube’s Docker engine.
 & minikube docker-env | Invoke-Expression
+
 
 docker pull mysql:8.0
 
@@ -35,9 +37,9 @@ docker info
 mvn clean install  
 
 # Build image 
-docker build -t favorites-service:latest .
-docker tag favorites-service:latest sagariprashanth/favorites-service:latest
-docker push sagariprashanth/favorites-service:latest
+docker build -t favorites-service:latest .  <br />
+docker tag favorites-service:latest sagariprashanth/favorites-service:latest <br />
+docker push sagariprashanth/favorites-service:latest <br />
 
 
 # verify image is creation
