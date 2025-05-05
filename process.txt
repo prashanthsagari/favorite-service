@@ -6,6 +6,20 @@ minikube start --driver=docker
 # Otherwise the image will be in your local PC, not inside Minikube’s Docker engine.
 & minikube docker-env | Invoke-Expression
 
+# docker pull gvenzl/oracle-xe:latest 
+
+kubectl get deployments
+
+kubectl scale deployment oracle-db --replicas=0
+kubectl delete -f k8s/oracle-deployment.yaml
+kubectl delete -f k8s/oracle-service.yaml
+kubectl get deployments
+kubectl get services
+kubectl get pods
+
+
+docker pull mysql:8.0
+
 # (Name: minikube)
 docker info  
 
@@ -15,29 +29,43 @@ mvn clean install
 
 # Build image 
 docker build -t favorites-service:latest .
+docker tag favorites-service:latest sagariprashanth/favorites-service:latest
+docker push sagariprashanth/favorites-service:latest
+
 
 
 # verify image is creation
 docker images
 
 # deployments 
+kubectl apply -f k8s/oracle-deployment.yaml
+kubectl apply -f k8s/oracle-service.yaml
 
-kubectl apply -f favorites-deployment.yaml
-kubectl apply -f favorites-service.yaml
+kubectl apply -f k8s/mysql-deployment.yaml
+kubectl apply -f k8s/mysql-service.yaml
+kubectl apply -f k8s/favorites-deployment.yaml
+kubectl apply -f k8s/favorites-service.yaml
 
 kubectl get pods
+kubectl get svc
+minikube ip
+
 
 
 minikube service favorites-service --url
        or
-kubectl port-forward svc/favorites-service 9001:9001
+
+kubectl port-forward svc/favorites-service 9000:9000
+kubectl port-forward svc/oracle-db 1522:1521
 
 
-
+kubectl port-forward svc/mysql 3307:3306
 
 # Delete old deployments 
 kubectl delete deployment favorites-service
 kubectl delete service favorites-service
+kubectl delete pod oracle-db-5758fcf769-xxg4w
+
 
 # Stop minikube
 minikube stop
