@@ -1,27 +1,3 @@
-drop table favorites;
-
-drop sequence favorites_seq;
-
-CREATE TABLE favorites (
-    id NUMBER PRIMARY KEY,
-    user_id NUMBER NOT NULL,
-    flat_id NUMBER NOT NULL,
-    favorited_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
-);
-
-
-CREATE SEQUENCE favorites_seq
-START WITH 1
-INCREMENT BY 1
-NOCACHE
-NOCYCLE;
-
-
-COMMIT;
-
-
-
-
 CREATE TABLE user_flat_favorites (
     id BIGINT auto_increment PRIMARY KEY,
     user_id BIGINT NOT NULL,

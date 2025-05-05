@@ -47,7 +47,8 @@ docker images <br />
 
 
 -- kubectl scale deployment mysql --replicas=0
-
+kubectl apply -f k8s/mysql-pv.yaml <br />
+kubectl apply -f k8s/mysql-pvc.yaml <br />
 kubectl apply -f k8s/mysql-deployment.yaml <br />
 kubectl apply -f k8s/mysql-service.yaml <br />
 kubectl apply -f k8s/favorites-deployment.yaml <br />
@@ -57,9 +58,17 @@ kubectl apply -f k8s/favorites-service.yaml <br />
 kubectl port-forward svc/favorites-service 9000:9000 <br />
 kubectl port-forward svc/mysql 3307:3306 <br />
 
+# stop mysql 
+kubectl scale deployment mysql --replicas=0
+
+# start mysql 
+kubectl scale deployment mysql --replicas=1
+
 # Delete old deployments 
 kubectl delete deployment favorites-service <br />
 kubectl delete service favorites-service <br />
+kubectl delete -f k8s/mysql-pv.yaml <br />
+kubectl delete -f k8s/mysql-pvc.yaml <br />
 kubectl delete -f k8s/mysql-deployment.yaml <br />
 kubectl delete -f k8s/mysql-service.yaml <br />
 
