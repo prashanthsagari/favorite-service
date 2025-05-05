@@ -16,7 +16,8 @@ Before you begin, ensure you have the following installed:
 
 ### 1. Start Minikube
 
-Run the following command to start Minikube with Docker as the driver:
+Run the following command to start Minikube with Docker as the driver:  <br />
+minikube start --driver=docker  <br />
 
 Run below commands using Powershell if  you are using Windows OS
 # start minikube in docker
