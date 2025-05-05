@@ -43,25 +43,25 @@ docker push sagariprashanth/favorites-service:latest <br />
 
 
 # verify image is creation
-docker images
+docker images <br />
 
 
 -- kubectl scale deployment mysql --replicas=0
 
-kubectl apply -f k8s/mysql-deployment.yaml
-kubectl apply -f k8s/mysql-service.yaml
-kubectl apply -f k8s/favorites-deployment.yaml
-kubectl apply -f k8s/favorites-service.yaml
+kubectl apply -f k8s/mysql-deployment.yaml <br />
+kubectl apply -f k8s/mysql-service.yaml <br />
+kubectl apply -f k8s/favorites-deployment.yaml <br />
+kubectl apply -f k8s/favorites-service.yaml <br />
 
 
-kubectl port-forward svc/favorites-service 9000:9000
-kubectl port-forward svc/mysql 3307:3306
+kubectl port-forward svc/favorites-service 9000:9000 <br />
+kubectl port-forward svc/mysql 3307:3306 <br />
 
 # Delete old deployments 
-kubectl delete deployment favorites-service
-kubectl delete service favorites-service
-kubectl delete -f k8s/mysql-deployment.yaml
-kubectl delete -f k8s/mysql-service.yaml
+kubectl delete deployment favorites-service <br />
+kubectl delete service favorites-service <br />
+kubectl delete -f k8s/mysql-deployment.yaml <br />
+kubectl delete -f k8s/mysql-service.yaml <br />
 
 # Stop minikube
 minikube stop
