@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: favorites-service
-          # image: favorites-service:latest
-          # imagePullPolicy: Never
-          image: sagariprashanth/favorites-service:latest
-          imagePullPolicy: Always
+          image: favorites-service:latest
+          imagePullPolicy: Never
+          #image: sagariprashanth/favorites-service:latest
+          #imagePullPolicy: Always
           ports:
             - containerPort: 9000
           env:

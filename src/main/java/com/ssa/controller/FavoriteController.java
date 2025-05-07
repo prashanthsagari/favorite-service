@@ -10,6 +10,7 @@ import com.ssa.service.FavoriteService;
 import java.util.List;
 
 @RestController
+//@CrossOrigin(origins = "http://localhost:9000")
 @RequestMapping("/favorites")
 @RequiredArgsConstructor
 public class FavoriteController {
