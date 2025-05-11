@@ -1,0 +1,8 @@
+
+# spring.datasource.url=jdbc:mysql://${DB_HOST}:${DB_PORT}/favorite_db
+#spring.datasource.url=jdbc:mysql://mysql-db:3306/favorite_db?autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
+
+
+# spring.datasource.url=jdbc:mysql://localhost:3306/favorite_db
+# spring.datasource.username=root
+# spring.datasource.password=1234
